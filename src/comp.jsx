@@ -74,32 +74,3 @@ const BasicLayout = () => {
 };
 
 export default BasicLayout;
-
-/* 
-  const generateLayout = () => {
-    const p = props;
-    return _.map(new Array(p.items), (item, i) => {
-      const minW = 2;
-      const minH = 4;
-      return {
-        x: (i * 2) % 12,
-        y: Math.floor(i / 6) * 1,
-        w: 2,
-        h: 6,
-        i: i.toString(),
-        minW,
-        minH,
-      };
-    });
-  }
-
-  const generateDOM = () => {
-    return _.map(_.range(props.items), item => {
-      return (
-        <div key={item}>
-          <Item item={item} />
-        </div>
-      );
-    });
-  }
-*/
