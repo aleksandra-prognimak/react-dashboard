@@ -5,7 +5,7 @@ const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
 const getFromLS = (key) => {
   let ls = {};
-  
+
   if (global.localStorage) {
     try {
       ls = JSON.parse(global.localStorage.getItem("rgl-8")) || {};
@@ -13,7 +13,7 @@ const getFromLS = (key) => {
       /*Ignore*/
     }
   }
-  
+
   return ls[key];
 };
 
@@ -24,54 +24,53 @@ const saveToLS = (key, value) => {
     global.localStorage.setItem(
       "rgl-8",
       JSON.stringify({
-        [key]: value
+        [key]: value,
       })
     );
   }
 };
 
 const BasicLayout = () => {
-  const [layouts, setLayouts] = useState(JSON.parse(JSON.stringify(originalLayouts)));
+  const [layouts, setLayouts] = useState(
+    JSON.parse(JSON.stringify(originalLayouts))
+  );
 
   const resetLayout = () => {
     setLayouts({});
-  }
+  };
 
   const onLayoutChange = (layout, layouts) => {
     saveToLS("layouts", layouts);
     setLayouts(layouts);
-  }
+  };
 
   return (
     <div>
-        <button onClick={() => resetLayout()}>Reset Layout</button>
-        <ResponsiveReactGridLayout
-          className="layout"
-          rowHeight={30}
-          layouts={layouts}
-          onLayoutChange={(layout, layouts) =>
-            onLayoutChange(layout, layouts)
-          }
-        >
-          <div key="1" data-grid={{ w: 4, h: 8, x: 0, y: 0, minW: 2, minH: 8 }}>
-            <span className="text">1</span>
-          </div>
-          <div key="2" data-grid={{ w: 4, h: 8, x: 4, y: 0, minW: 2, minH: 8 }}>
-            <span className="text">2</span>
-          </div>
-          <div key="3" data-grid={{ w: 4, h: 8, x: 8, y: 0, minW: 2, minH: 8 }}>
-            <span className="text">3</span>
-          </div>
-          <div key="4" data-grid={{ w: 4, h: 8, x: 0, y: 1, minW: 2, minH: 8 }}>
-            <span className="text">4</span>
-          </div>
-          <div key="5" data-grid={{ w: 4, h: 8, x: 4, y: 1, minW: 2, minH: 8 }}>
-            <span className="text">5</span>
-          </div>
-        </ResponsiveReactGridLayout>
-      </div>
+      <button onClick={() => resetLayout()}>Reset Layout</button>
+      <ResponsiveReactGridLayout
+        className="layout"
+        rowHeight={30}
+        layouts={layouts}
+        onLayoutChange={(layout, layouts) => onLayoutChange(layout, layouts)}
+      >
+        <div key="1" data-grid={{ w: 4, h: 8, x: 0, y: 0, minW: 2, minH: 8 }}>
+          <span className="text">1</span>
+        </div>
+        <div key="2" data-grid={{ w: 4, h: 8, x: 4, y: 0, minW: 2, minH: 8 }}>
+          <span className="text">2</span>
+        </div>
+        <div key="3" data-grid={{ w: 4, h: 8, x: 8, y: 0, minW: 2, minH: 8 }}>
+          <span className="text">3</span>
+        </div>
+        <div key="4" data-grid={{ w: 4, h: 8, x: 0, y: 1, minW: 2, minH: 8 }}>
+          <span className="text">4</span>
+        </div>
+        <div key="5" data-grid={{ w: 4, h: 8, x: 4, y: 1, minW: 2, minH: 8 }}>
+          <span className="text">5</span>
+        </div>
+      </ResponsiveReactGridLayout>
+    </div>
   );
-  
 };
 
 export default BasicLayout;
