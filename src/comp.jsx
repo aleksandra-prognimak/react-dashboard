@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { WidthProvider, Responsive } from "react-grid-layout";
-import { AreaChartComp } from './AreaChartComp';
+import { AreaChartComp } from "./AreaChartComp";
+import { BarChartComp } from './BarChartComp';
 import { LineChartComp } from "./LineChartComp";
 
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
@@ -93,7 +94,9 @@ const BasicLayout = () => {
 
   return (
     <div>
-      <button className="button" onClick={() => resetLayout()}>Reset Layout</button>
+      <button className="button" onClick={() => resetLayout()}>
+        Reset Layout
+      </button>
       <ResponsiveReactGridLayout
         className="layout"
         rowHeight={30}
@@ -103,14 +106,11 @@ const BasicLayout = () => {
         <div key="1" data-grid={{ w: 4, h: 8, x: 0, y: 0, minW: 2, minH: 8 }}>
           <LineChartComp data={data} />
         </div>
-        <div
-          key="2"
-          data-grid={{ w: 4, h: 8, x: 4, y: 0, minW: 2, minH: 8 }}
-        >
+        <div key="2" data-grid={{ w: 4, h: 8, x: 4, y: 0, minW: 2, minH: 8 }}>
           <AreaChartComp data={data} />
         </div>
         <div key="3" data-grid={{ w: 4, h: 8, x: 8, y: 0, minW: 2, minH: 8 }}>
-          <span className="text">3</span>
+          <BarChartComp data={data} />
         </div>
         <div key="4" data-grid={{ w: 4, h: 8, x: 0, y: 1, minW: 2, minH: 8 }}>
           <span className="text">4</span>
