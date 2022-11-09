@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC } from 'react';
 import {
   AreaChart,
   Area,
@@ -8,8 +8,8 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
-} from "recharts";
-import { Data } from "../../types/data";
+} from 'recharts';
+import { Data } from '../../types/data';
 
 type Props = {
   data: Data[];
@@ -31,7 +31,7 @@ export const AreaChartComp: FC<Props> = ({ data }) => (
       <YAxis axisLine={false} tickLine={false} />
       <Tooltip />
       <Legend />
-      <Area type="monotone" dataKey="uv" stroke="#8884d8" fill="#8884d8" />
+      <Area type="monotone" dataKey="schools" stroke="#8884d8" fill="#8884d8" />
     </AreaChart>
   </ResponsiveContainer>
 );

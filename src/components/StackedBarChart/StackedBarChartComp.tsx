@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC } from 'react';
 import {
   BarChart,
   Bar,
@@ -8,8 +8,8 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
-} from "recharts";
-import { Data } from "../../types/data";
+} from 'recharts';
+import { Data } from '../../types/data';
 
 type Props = {
   data: Data[];
@@ -31,9 +31,9 @@ export const StackedBarChartComp: FC<Props> = ({ data }) => (
       <YAxis axisLine={false} tickLine={false} />
       <Tooltip />
       <Legend />
-      <Bar dataKey="pv" stackId="a" fill="#8884d8" />
-      <Bar dataKey="amt" stackId="a" fill="#9793ea" />
-      <Bar dataKey="uv" stackId="a" fill="#82ca9d" />
+      <Bar dataKey="schools" stackId="a" fill="#615dbb" />
+      <Bar dataKey="kindergartens" stackId="a" fill="#8884d8" />
+      <Bar dataKey="universities" stackId="a" fill="#9793ea" />
     </BarChart>
   </ResponsiveContainer>
 );

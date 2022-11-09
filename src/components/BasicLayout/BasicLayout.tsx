@@ -1,97 +1,54 @@
-import React, { useState } from "react";
-import { WidthProvider, Responsive } from "react-grid-layout";
-import { AreaChartComp } from "../AreaChart";
-import { BarChartComp } from "../BarChart";
-import { LineChartComp } from "../LineChart";
-import { PieChartComp } from "../PieChart";
-import { StackedBarChartComp } from "../StackedBarChart";
+import { useState } from 'react';
+import { WidthProvider, Responsive } from 'react-grid-layout';
+import { data } from '../../data/data';
+import { Layout, MiddleLayout, InnerLayout } from '../../types/layout';
+import { AreaChartComp } from '../AreaChart';
+import { BarChartComp } from '../BarChart';
+import { LineChartComp } from '../LineChart';
+import { PieChartComp } from '../PieChart';
+import { StackedBarChartComp } from '../StackedBarChart';
 import './BasicLayout.scss';
 
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
-const getFromLS = (key) => {
-  let ls = {};
+const getFromLS = (key: string) => {
+  let ls: Layout = {};
 
-  if (global.localStorage) {
-    try {
-      ls = JSON.parse(global.localStorage.getItem("rgl-8")) || {};
-    } catch (e) {
-      /*Ignore*/
-    }
+  const value = global.localStorage.getItem('rgl-8') || '';
+
+  try {
+    ls = JSON.parse(value);
+  } catch (e) {
+    /*Ignore*/
   }
 
   return ls[key];
 };
 
-const originalLayouts = getFromLS("layouts") || {};
-
-const saveToLS = (key, value) => {
+const saveToLS = (key: string, value: MiddleLayout) => {
   if (global.localStorage) {
     global.localStorage.setItem(
-      "rgl-8",
+      'rgl-8',
       JSON.stringify({
         [key]: value,
-      })
+      }),
     );
   }
 };
 
-export const data = [
-  {
-    name: "Page A",
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
-  },
-  {
-    name: "Page B",
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    name: "Page C",
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    name: "Page D",
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    name: "Page E",
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    name: "Page G",
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
-  },
-];
+const originalLayouts = getFromLS('layouts') || {};
 
 const BasicLayout = () => {
   const [layouts, setLayouts] = useState(
-    JSON.parse(JSON.stringify(originalLayouts))
+    JSON.parse(JSON.stringify(originalLayouts)),
   );
 
   const resetLayout = () => {
     setLayouts({});
   };
 
-  const onLayoutChange = (layout, layouts) => {
-    saveToLS("layouts", layouts);
+  const onLayoutChange = (_layout: InnerLayout[], layouts: MiddleLayout) => {
+    saveToLS('layouts', layouts);
     setLayouts(layouts);
   };
 
@@ -119,7 +76,7 @@ const BasicLayout = () => {
           <StackedBarChartComp data={data} />
         </div>
         <div key="5" data-grid={{ w: 4, h: 8, x: 4, y: 1, minW: 2, minH: 8 }}>
-          <PieChartComp />
+          <PieChartComp data={data} />
         </div>
       </ResponsiveReactGridLayout>
     </>

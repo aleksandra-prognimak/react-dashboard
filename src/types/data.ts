@@ -1,6 +1,6 @@
 export interface Data {
-  name: string,
-  uv: number,
-  pv: number,
-  amt: number,
+  name: string;
+  schools: number;
+  kindergartens: number;
+  universities: number;
 }

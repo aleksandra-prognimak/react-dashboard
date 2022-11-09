@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC } from 'react';
 import {
   LineChart,
   Line,
@@ -8,8 +8,8 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
-} from "recharts";
-import { Data } from "../../types/data";
+} from 'recharts';
+import { Data } from '../../types/data';
 
 type Props = {
   data: Data[];
@@ -31,7 +31,7 @@ export const LineChartComp: FC<Props> = ({ data }) => (
       <YAxis axisLine={false} tickLine={false} />
       <Tooltip />
       <Legend />
-      <Line dataKey="pv" stroke="#8884d8" />
+      <Line dataKey="kindergartens" stroke="#8884d8" />
     </LineChart>
   </ResponsiveContainer>
 );

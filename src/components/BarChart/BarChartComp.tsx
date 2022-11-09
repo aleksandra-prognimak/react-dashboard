@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC } from 'react';
 import {
   BarChart,
   Bar,
@@ -8,8 +8,8 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
-} from "recharts";
-import { Data } from "../../types/data";
+} from 'recharts';
+import { Data } from '../../types/data';
 
 type Props = {
   data: Data[];
@@ -31,7 +31,7 @@ export const BarChartComp: FC<Props> = ({ data }) => (
       <YAxis axisLine={false} tickLine={false} />
       <Tooltip />
       <Legend />
-      <Bar dataKey="uv" fill="#8884d8" />
+      <Bar dataKey="universities" fill="#8884d8" />
     </BarChart>
   </ResponsiveContainer>
 );
