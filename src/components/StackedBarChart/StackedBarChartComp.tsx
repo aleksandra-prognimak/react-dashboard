@@ -1,7 +1,7 @@
-import React from "react";
+import { FC } from "react";
 import {
-  AreaChart,
-  Area,
+  BarChart,
+  Bar,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -9,10 +9,15 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import { Data } from "../../types/data";
 
-export const AreaChartComp = ({ data }) => (
+type Props = {
+  data: Data[];
+};
+
+export const StackedBarChartComp: FC<Props> = ({ data }) => (
   <ResponsiveContainer width="100%" height="100%">
-    <AreaChart
+    <BarChart
       data={data}
       margin={{
         top: 50,
@@ -26,7 +31,9 @@ export const AreaChartComp = ({ data }) => (
       <YAxis axisLine={false} tickLine={false} />
       <Tooltip />
       <Legend />
-      <Area type="monotone" dataKey="uv" stroke="#8884d8" fill="#8884d8" />
-    </AreaChart>
+      <Bar dataKey="pv" stackId="a" fill="#8884d8" />
+      <Bar dataKey="amt" stackId="a" fill="#9793ea" />
+      <Bar dataKey="uv" stackId="a" fill="#82ca9d" />
+    </BarChart>
   </ResponsiveContainer>
 );

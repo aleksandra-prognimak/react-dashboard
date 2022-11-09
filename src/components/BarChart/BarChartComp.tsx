@@ -1,7 +1,7 @@
-import React from "react";
+import { FC } from "react";
 import {
-  LineChart,
-  Line,
+  BarChart,
+  Bar,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -9,10 +9,15 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import { Data } from "../../types/data";
 
-export const LineChartComp = ({ data }) => (
+type Props = {
+  data: Data[];
+};
+
+export const BarChartComp: FC<Props> = ({ data }) => (
   <ResponsiveContainer width="100%" height="100%">
-    <LineChart
+    <BarChart
       data={data}
       margin={{
         top: 50,
@@ -26,7 +31,7 @@ export const LineChartComp = ({ data }) => (
       <YAxis axisLine={false} tickLine={false} />
       <Tooltip />
       <Legend />
-      <Line dataKey="pv" stroke="#8884d8" />
-    </LineChart>
+      <Bar dataKey="uv" fill="#8884d8" />
+    </BarChart>
   </ResponsiveContainer>
 );

@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { WidthProvider, Responsive } from "react-grid-layout";
-import { AreaChartComp } from "./AreaChartComp";
-import { BarChartComp } from './BarChartComp';
-import { LineChartComp } from "./LineChartComp";
+import { AreaChartComp } from "../AreaChart";
+import { BarChartComp } from "../BarChart";
+import { LineChartComp } from "../LineChart";
+import { PieChartComp } from "../PieChart";
+import { StackedBarChartComp } from "../StackedBarChart";
+import './BasicLayout.scss';
 
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
@@ -93,7 +96,7 @@ const BasicLayout = () => {
   };
 
   return (
-    <div>
+    <>
       <button className="button" onClick={() => resetLayout()}>
         Reset Layout
       </button>
@@ -113,13 +116,13 @@ const BasicLayout = () => {
           <BarChartComp data={data} />
         </div>
         <div key="4" data-grid={{ w: 4, h: 8, x: 0, y: 1, minW: 2, minH: 8 }}>
-          <span className="text">4</span>
+          <StackedBarChartComp data={data} />
         </div>
         <div key="5" data-grid={{ w: 4, h: 8, x: 4, y: 1, minW: 2, minH: 8 }}>
-          <span className="text">5</span>
+          <PieChartComp />
         </div>
       </ResponsiveReactGridLayout>
-    </div>
+    </>
   );
 };
 
