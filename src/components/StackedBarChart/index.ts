@@ -1,1 +1,1 @@
-export * from "./StackedBarChartComp";
+export * from './StackedBarChartComp';
