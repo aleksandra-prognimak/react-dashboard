@@ -1,5 +1,5 @@
 import BasicLayout from "./comp";
-import "./App.css";
+import "./App.scss";
 
 export const App = () => {
   return (
