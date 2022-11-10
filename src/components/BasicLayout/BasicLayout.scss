@@ -15,16 +15,16 @@
   font-size: 20px;
   letter-spacing: 1px;
   transition: all 0.2s;
-}
 
-.button:hover {
-  background-color: $lightPurple;
-  text-shadow: 2px 2px 2px $mainPurple;
-  border: 1px solid $mainPurple;
-}
+  &:hover {
+    background-color: $lightPurple;
+    text-shadow: 2px 2px 2px $mainPurple;
+    border: 1px solid $mainPurple;
+  }
 
-.button:active {
-  box-shadow: $mainPurple 0px 1px 2px 0px, $mainPurple 0px 1px 3px 1px;
+  &:active {
+    box-shadow: $mainPurple 0px 1px 2px 0px, $mainPurple 0px 1px 3px 1px;
+  }
 }
 
 .react-grid-layout {
